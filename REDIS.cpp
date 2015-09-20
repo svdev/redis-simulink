@@ -235,7 +235,7 @@ static void mdlInitializeSizes(SimStruct *S)
         
     if (!ssSetNumOutputPorts(S, NUM_OUTPUTS)) return;  
     ssSetOutputPortDataType(S,0,SS_FCN_CALL);
-    ssSetOutputPortWidth(S, 0, 2);
+    ssSetOutputPortWidth(S, 0, 3);
     
     if (!ssSetOutputPortDimensionInfo(S, 1, DYNAMIC_DIMENSION)) return; // Output port 1 size is dynamic
     _ssSetOutputPortNumDimensions(S, 1, 1);    
@@ -290,6 +290,7 @@ static void mdlInitializeSampleTimes(SimStruct *S)
     
     ssSetCallSystemOutput(S,0);  /* call on first element: RECEIVED */    
     ssSetCallSystemOutput(S,1);  /* call on second element: FINISHED */    
+    ssSetCallSystemOutput(S,2);  /* call on third element: STARTED */    
     ssSetModelReferenceSampleTimeDefaultInheritance(S);
 }
 

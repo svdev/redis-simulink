@@ -46,6 +46,7 @@ void REDIS_Outputs_parse_response(SimStruct *S, redisContext *c, redisReply *rep
     // Empty data output port
     memset(data, 0, data_width);          
     
+    REDIS_started(S,tid);
     int len = 0;
      // PARSE RESPONSE        
     switch(reply->type){        
@@ -147,4 +148,17 @@ bool REDIS_finished(SimStruct *S, int_T tid){
     
     return true;
 }
+
+bool REDIS_started(SimStruct *S, int_T tid){
+        
+    // FINISHED
+    if (!ssCallSystemWithTid(S,2,tid)) {
+        /* Error occurred, which will be reported by */
+        /*the Simulink engine*/
+        return false;
+    }
+    
+    return true;
+}
+
 
